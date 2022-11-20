@@ -1,10 +1,10 @@
-import React, { useEffect } from 'react'
-import { ActivityIndicator, View, Text } from 'react-native'
-import { useTranslation } from 'react-i18next'
-import { useTheme } from '@/Hooks'
 import { Brand } from '@/Components'
-import { setDefaultTheme } from '@/Store/Theme'
+import { useTheme } from '@/Hooks'
 import { navigateAndSimpleReset } from '@/Navigators/utils'
+import { setDefaultTheme } from '@/Store/Theme'
+import React, { useEffect } from 'react'
+import { useTranslation } from 'react-i18next'
+import { ActivityIndicator, Text, View } from 'react-native'
 
 const StartupContainer = () => {
   const { Layout, Gutters, Fonts } = useTheme()
@@ -12,11 +12,6 @@ const StartupContainer = () => {
   const { t } = useTranslation()
 
   const init = async () => {
-    await new Promise(resolve =>
-      setTimeout(() => {
-        resolve(true)
-      }, 2000),
-    )
     await setDefaultTheme({ theme: 'default', darkMode: null })
     navigateAndSimpleReset('Main')
   }
